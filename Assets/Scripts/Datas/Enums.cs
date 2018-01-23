@@ -13,7 +13,13 @@
         /// <summary>
         /// 输入框
         /// </summary>
-        InputDialog
+        InputDialog,
+        /// <summary>
+        /// 信息框
+        /// </summary>
+        MessageBox,
+        //TODO ListChooseDialog1 下拉选择
+        //TODO ListChooseDialog2 列表选择
     }
 
     /// <summary>

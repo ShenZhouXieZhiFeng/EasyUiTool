@@ -10,6 +10,7 @@ public class Test : MonoBehaviour {
         #region AlertDialog
         if (GUILayout.Button("AlertDialog"))
         {
+            //加载一个AlertDialog
             AlertDialog aDialog = DialogBuilder.GetDialog(UiType.AlertDialog) as AlertDialog;
             //内容
             aDialog.SetTitle("test标题")
@@ -22,7 +23,7 @@ public class Test : MonoBehaviour {
                 {
                     Debug.Log("Click Positive Button");
                 });
-            //动画类型
+            //设置动画类型
             aDialog.SetAnimation(UiAnimationType.Zoom, 0.5f, UiAnimationType.Zoom, 0.5f);
             aDialog.Show();
         }
