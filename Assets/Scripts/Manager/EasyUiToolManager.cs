@@ -21,10 +21,5 @@ namespace EasyUiTool
             Instance = this;
         }
 
-        void Start()
-        {
-
-        }
-
     }
 }
