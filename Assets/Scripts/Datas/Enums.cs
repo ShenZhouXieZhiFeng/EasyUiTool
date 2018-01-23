@@ -2,11 +2,20 @@
 {
 
     /// <summary>
-    /// 对话框类型
+    /// 组件类型
     /// </summary>
-    public enum DialogType
+    public enum UiType
     {
         AlertDialog
+    }
+
+    /// <summary>
+    /// UI动画类型
+    /// </summary>
+    public enum UiAnimationType
+    {
+        Fade,
+        Zoom
     }
 
 }
