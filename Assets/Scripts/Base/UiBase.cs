@@ -7,19 +7,25 @@ namespace EasyUiTool
     [RequireComponent(typeof(CanvasGroup))]
     public class UiBase : MonoBehaviour
     {
+        #region member
+
         //动画帮组类
         UiAnimationHelper helper;
         //进入和退出动画类型
-        protected UiAnimationType AnimationShow = UiAnimationType.Fade;
-        protected UiAnimationType AnimationClose = UiAnimationType.Zoom;
+        protected UiAnimationType AnimationShow = EasyUiDefaultConfig.DefaultAnimationType;
+        protected UiAnimationType AnimationClose = EasyUiDefaultConfig.DefaultAnimationType;
         //动画时间
-        protected float ShowAnimationTime = 1.5f;
-        protected float CloseAnimationTime = 1.5f;
+        protected float ShowAnimationTime = EasyUiDefaultConfig.DefaultAnimationTime;
+        protected float CloseAnimationTime = EasyUiDefaultConfig.DefaultAnimationTime;
+
+        #endregion
 
         public UiBase()
         {
             helper = new UiAnimationHelper();
         }
+
+        #region func
 
         /// <summary>
         /// 显示
@@ -58,6 +64,23 @@ namespace EasyUiTool
                     break;
             }
         }
+
+        /// <summary>
+        /// 设置动画类型和动画时间
+        /// </summary>
+        /// <param name="animationIn">进入动画</param>
+        /// <param name="inTime">进入动画播放时间</param>
+        /// <param name="animationOut">退出动画</param>
+        /// <param name="outTime">退出动画显示时间</param>
+        public void SetAnimation(UiAnimationType animationIn,float inTime,UiAnimationType animationOut,float outTime)
+        {
+            AnimationShow = animationIn;
+            ShowAnimationTime = inTime;
+            AnimationClose = animationOut;
+            CloseAnimationTime = outTime;
+        }
+
+        #endregion
 
         #region virtual
 

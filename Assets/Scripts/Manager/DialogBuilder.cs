@@ -35,7 +35,7 @@ namespace EasyUiTool
                 return panel;
             }
             //如果池中不存在，则进行创建
-            GameObject panelPrefab = Resources.Load(StringConfig.UiPrefabPath + type.ToString()) as GameObject;
+            GameObject panelPrefab = Resources.Load(EasyUiDefaultConfig.UiPrefabPath + type.ToString()) as GameObject;
             if (panelPrefab == null)
             {
                 Debug.LogError(string.Format("缺少{0}预制体", type.ToString()));
@@ -48,7 +48,7 @@ namespace EasyUiTool
                 Debug.LogError(string.Format("{0}预制体上缺少UiBase组件", type.ToString()));
                 return null;
             }
-            //保证组件的unity生命周期能够得到执行
+            //保证组件创建出来的时候unity生命周期能够得到执行
             newGo.SetActive(true);
             newGo.SetActive(false);
             panelPool.Add(type, newPanel);

@@ -7,18 +7,24 @@ using UnityEngine.UI;
 
 namespace EasyUiTool
 {
+    public delegate void AlertDialogNegativeDelegate();
+    public delegate void AlertDialogPositionDelegate();
+    /// <summary>
+    /// 警告信息框
+    /// </summary>
     public class AlertDialog : UiBase
     {
         private Text txtTitle, txtMsg, txtCancel, txtConfirm;
         private Button btnCancel, btnConfirm;
-        private UnityAction NegativeButtonAction, PositiveButtonAction;
+        private AlertDialogNegativeDelegate NegativeButtonAction;
+        private AlertDialogPositionDelegate PositiveButtonAction;
 
         private void Awake()
         {
-            Init();
+            init();
         }
 
-        void Init()
+        void init()
         {
             txtTitle = transform.Find("Up/Title").GetComponent<Text>();
             txtMsg = transform.Find("Mid/Msg").GetComponent<Text>();
@@ -66,21 +72,20 @@ namespace EasyUiTool
         /// <summary>
         /// 设置取消按钮
         /// </summary>
-        public AlertDialog SetNegativeButton(UnityAction negativeAction)
+        /// <param name="content"></param>
+        /// <param name="negativeAction"></param>
+        /// <returns></returns>
+        public AlertDialog SetNegativeButton(string content, AlertDialogNegativeDelegate negativeAction)
         {
-            NegativeButtonAction = negativeAction;
-            return this;
+            txtCancel.text = content;
+            return SetNegativeButton(negativeAction);
         }
 
         /// <summary>
         /// 设置取消按钮
         /// </summary>
-        /// <param name="content"></param>
-        /// <param name="negativeAction"></param>
-        /// <returns></returns>
-        public AlertDialog SetNegativeButton(string content, UnityAction negativeAction)
+        public AlertDialog SetNegativeButton(AlertDialogNegativeDelegate negativeAction)
         {
-            txtCancel.text = content;
             NegativeButtonAction = negativeAction;
             return this;
         }
@@ -88,21 +93,20 @@ namespace EasyUiTool
         /// <summary>
         /// 设置确定按钮
         /// </summary>
-        public AlertDialog SetPositiveButton(UnityAction positiveAction)
+        /// <param name="content"></param>
+        /// <param name="negativeAction"></param>
+        /// <returns></returns>
+        public AlertDialog SetPositiveButton(string content, AlertDialogPositionDelegate positiveAction)
         {
-            PositiveButtonAction = positiveAction;
-            return this;
+            txtConfirm.text = content;
+            return SetPositiveButton(positiveAction);
         }
 
         /// <summary>
         /// 设置确定按钮
         /// </summary>
-        /// <param name="content"></param>
-        /// <param name="negativeAction"></param>
-        /// <returns></returns>
-        public AlertDialog SetPositiveButton(string content, UnityAction positiveAction)
+        public AlertDialog SetPositiveButton(AlertDialogPositionDelegate positiveAction)
         {
-            txtConfirm.text = content;
             PositiveButtonAction = positiveAction;
             return this;
         }
@@ -114,10 +118,12 @@ namespace EasyUiTool
         public override void ResetSelf()
         {
             base.ResetSelf();
-            txtTitle.text = StringConfig.DefaultTitle;
-            txtMsg.text = StringConfig.DefaultMsg;
-            txtCancel.text = StringConfig.DefaultCancelDesc;
-            txtConfirm.text = StringConfig.DefaultConfirmDesc;
+            NegativeButtonAction = null;
+            PositiveButtonAction = null;
+            txtTitle.text = EasyUiDefaultConfig.DefaultTitle;
+            txtMsg.text = EasyUiDefaultConfig.DefaultMsg;
+            txtCancel.text = EasyUiDefaultConfig.DefaultCancelDesc;
+            txtConfirm.text = EasyUiDefaultConfig.DefaultConfirmDesc;
         }
 
         #endregion

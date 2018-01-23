@@ -6,7 +6,14 @@
     /// </summary>
     public enum UiType
     {
-        AlertDialog
+        /// <summary>
+        /// 警告对话框
+        /// </summary>
+        AlertDialog,
+        /// <summary>
+        /// 输入框
+        /// </summary>
+        InputDialog
     }
 
     /// <summary>
@@ -14,7 +21,13 @@
     /// </summary>
     public enum UiAnimationType
     {
+        /// <summary>
+        /// 渐变
+        /// </summary>
         Fade,
+        /// <summary>
+        /// 缩放
+        /// </summary>
         Zoom
     }
 

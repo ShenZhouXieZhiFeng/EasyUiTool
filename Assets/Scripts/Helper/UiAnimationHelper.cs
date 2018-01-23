@@ -47,6 +47,7 @@ namespace EasyUiTool
             }
             cg.DOFade(0, playTime).OnComplete(() =>
             {
+                cg.alpha = 1;
                 if (overCall != null)
                     overCall();
             });
@@ -76,6 +77,7 @@ namespace EasyUiTool
         {
             target.DOScale(0, playTime).OnComplete(() =>
             {
+                target.localScale = Vector3.one;
                 if (overCall != null)
                     overCall();
             });
