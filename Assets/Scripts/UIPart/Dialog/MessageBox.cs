@@ -1,29 +1,33 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace EasyUiTool
 {
-    public delegate void MessageBoxCloseDelagate();
-
     public class MessageBox : UiBase
     {
-        public float MaxWidth = 800;
-        public float MaxHeight = 600;
-
         private Text txtMsg;
         private RectTransform rectTransform;
 
-        private float perRowHeight = 26;
+        private float perRowHeight = 26;//每多一行文字增加的高度
         private float showTime = 2f;
+        private float maxWidth = 800;
+        private float maxHeight = 600;
 
-        private MessageBoxCloseDelagate closeDelagate;
+        private Action closeDelagate;
 
         private void Awake()
         {
+            init();
+        }
+        void init()
+        {
             rectTransform = GetComponent<RectTransform>();
-            txtMsg = transform.Find("Text").GetComponent<Text>();
+            txtMsg = transform.Find("txtMsg").GetComponent<Text>();
+
+            ResetSelf();
         }
 
         #region set
@@ -43,12 +47,12 @@ namespace EasyUiTool
         {
             Vector2 sizeData = rectTransform.sizeDelta;
             float needLength = txtMsg.preferredWidth;
-            if (needLength > MaxWidth)
+            if (needLength > maxWidth)
             {
-                sizeData.x = MaxWidth;
-                int count = (int)(needLength / MaxWidth);
+                sizeData.x = maxWidth;
+                int count = (int)(needLength / maxWidth);
                 float countHeight = (count + 1) * perRowHeight;
-                float needWidth = countHeight > MaxHeight ? MaxHeight : countHeight;
+                float needWidth = countHeight > maxHeight ? maxHeight : countHeight;
                 sizeData.y = needWidth;
             }
             else
@@ -74,9 +78,16 @@ namespace EasyUiTool
         /// </summary>
         /// <param name="closeAction"></param>
         /// <returns></returns>
-        public MessageBox SetCloseAction(MessageBoxCloseDelagate closeAction)
+        public MessageBox SetCloseAction(Action closeAction)
         {
             closeDelagate = closeAction;
+            return this;
+        }
+
+        public MessageBox SetMaxSize(float maxWidth,float maxHeight)
+        {
+            this.maxWidth = maxWidth;
+            this.maxHeight = maxHeight;
             return this;
         }
 
@@ -101,7 +112,9 @@ namespace EasyUiTool
         {
             base.ResetSelf();
             closeDelagate = null;
-            this.showTime = EasyUiDefaultConfig.DefaultMessageShowTime;
+            showTime = EasyUiDefaultConfig.DefaultMessageShowTime;
+            maxWidth = EasyUiDefaultConfig.DefaultMessageBoxMaxWidth;
+            maxHeight = EasyUiDefaultConfig.DefaultMessageBoxMaxHeight;
             SetMsg(EasyUiDefaultConfig.DefaultMsg);
         }
 

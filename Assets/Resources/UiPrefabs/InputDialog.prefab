@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222206958536934904}
   - component: {fileID: 114023003695242684}
   m_Layer: 5
-  m_Name: Icon
+  m_Name: imgIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 222286449446776748}
   - component: {fileID: 114148397741084018}
   m_Layer: 5
-  m_Name: Title
+  m_Name: txtTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 114136444855365682}
   - component: {fileID: 114224333712012340}
   m_Layer: 5
-  m_Name: BtnClose
+  m_Name: btnClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224478287545820550}
   m_Layer: 5
-  m_Name: Down
+  m_Name: down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224447977268540222}
   m_Layer: 5
-  m_Name: Up
+  m_Name: up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 114674168195825734}
   - component: {fileID: 114973955938644046}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: inputValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 114889306792035600}
   - component: {fileID: 114398834742643614}
   m_Layer: 5
-  m_Name: ConfirmButton
+  m_Name: btnConfirm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

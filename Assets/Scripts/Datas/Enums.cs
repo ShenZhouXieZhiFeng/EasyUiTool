@@ -19,9 +19,27 @@
         /// </summary>
         MessageBox,
         /// <summary>
-        /// 下拉列表选择框
+        /// 列表选择框，单选
         /// </summary>
         ListChooseDialog,
+        /// <summary>
+        /// 进度条弹出框
+        /// </summary>
+        ProgressDialog,
+        /// <summary>
+        /// 等待进度圈
+        /// </summary>
+        WaitBox,
+        /// <summary>
+        /// 倒计时
+        /// </summary>
+        CountDownBox,
+        /// <summary>
+        /// 图片窗口
+        /// </summary>
+        ImageDialog,
+        //TODO video
+
     }
 
     /// <summary>

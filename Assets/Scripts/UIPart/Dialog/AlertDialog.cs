@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 namespace EasyUiTool
 {
-    public delegate void AlertDialogNegativeDelegate();
-    public delegate void AlertDialogPositionDelegate();
     /// <summary>
     /// 警告信息框
     /// </summary>
@@ -16,8 +14,8 @@ namespace EasyUiTool
     {
         private Text txtTitle, txtMsg, txtCancel, txtConfirm;
         private Button btnCancel, btnConfirm;
-        private AlertDialogNegativeDelegate NegativeButtonAction;
-        private AlertDialogPositionDelegate PositiveButtonAction;
+        private Action negativeButtonAction;
+        private Action positiveButtonAction;
 
         private void Awake()
         {
@@ -26,23 +24,23 @@ namespace EasyUiTool
 
         void init()
         {
-            txtTitle = transform.Find("Up/Title").GetComponent<Text>();
-            txtMsg = transform.Find("Mid/Msg").GetComponent<Text>();
-            btnCancel = transform.Find("Down/CancelButton").GetComponent<Button>();
-            btnConfirm = transform.Find("Down/ConfirmButton").GetComponent<Button>();
+            txtTitle = transform.Find("up/txtTitle").GetComponent<Text>();
+            txtMsg = transform.Find("mid/txtMsg").GetComponent<Text>();
+            btnCancel = transform.Find("down/btnCancel").GetComponent<Button>();
+            btnConfirm = transform.Find("down/btnConfirm").GetComponent<Button>();
             txtCancel = btnCancel.transform.Find("Text").GetComponent<Text>();
             txtConfirm = btnConfirm.transform.Find("Text").GetComponent<Text>();
 
             btnCancel.onClick.AddListener(() =>
             {
-                if (NegativeButtonAction != null)
-                    NegativeButtonAction();
+                if (negativeButtonAction != null)
+                    negativeButtonAction();
                 Close();
             });
             btnConfirm.onClick.AddListener(() =>
             {
-                if (PositiveButtonAction != null)
-                    PositiveButtonAction();
+                if (positiveButtonAction != null)
+                    positiveButtonAction();
                 Close();
             });
 
@@ -75,7 +73,7 @@ namespace EasyUiTool
         /// <param name="content"></param>
         /// <param name="negativeAction"></param>
         /// <returns></returns>
-        public AlertDialog SetNegativeButton(string content, AlertDialogNegativeDelegate negativeAction)
+        public AlertDialog SetNegativeButton(string content, Action negativeAction)
         {
             txtCancel.text = content;
             return SetNegativeButton(negativeAction);
@@ -84,9 +82,9 @@ namespace EasyUiTool
         /// <summary>
         /// 设置取消按钮
         /// </summary>
-        public AlertDialog SetNegativeButton(AlertDialogNegativeDelegate negativeAction)
+        public AlertDialog SetNegativeButton(Action negativeAction)
         {
-            NegativeButtonAction = negativeAction;
+            negativeButtonAction = negativeAction;
             return this;
         }
 
@@ -96,7 +94,7 @@ namespace EasyUiTool
         /// <param name="content"></param>
         /// <param name="negativeAction"></param>
         /// <returns></returns>
-        public AlertDialog SetPositiveButton(string content, AlertDialogPositionDelegate positiveAction)
+        public AlertDialog SetPositiveButton(string content, Action positiveAction)
         {
             txtConfirm.text = content;
             return SetPositiveButton(positiveAction);
@@ -105,9 +103,9 @@ namespace EasyUiTool
         /// <summary>
         /// 设置确定按钮
         /// </summary>
-        public AlertDialog SetPositiveButton(AlertDialogPositionDelegate positiveAction)
+        public AlertDialog SetPositiveButton(Action positiveAction)
         {
-            PositiveButtonAction = positiveAction;
+            positiveButtonAction = positiveAction;
             return this;
         }
 
@@ -118,8 +116,8 @@ namespace EasyUiTool
         public override void ResetSelf()
         {
             base.ResetSelf();
-            NegativeButtonAction = null;
-            PositiveButtonAction = null;
+            negativeButtonAction = null;
+            positiveButtonAction = null;
             txtTitle.text = EasyUiDefaultConfig.DefaultTitle;
             txtMsg.text = EasyUiDefaultConfig.DefaultMsg;
             txtCancel.text = EasyUiDefaultConfig.DefaultCancelDesc;

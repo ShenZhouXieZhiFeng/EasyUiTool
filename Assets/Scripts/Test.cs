@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using EasyUiTool;
+using DG.Tweening;
 
 public class Test : MonoBehaviour {
 
@@ -87,6 +88,44 @@ public class Test : MonoBehaviour {
 
         #endregion
 
-    }
+        #region ProgressDialog
 
+        if (GUILayout.Button("ProgressDialog"))
+        {
+            ProgressDialog pDialog = DialogBuilder.GetDialog(UiType.ProgressDialog) as ProgressDialog;
+            pDialog.SetTitle("加载中，请稍等");
+            pDialog.SetCompletedAction(() =>
+            {
+                Debug.Log("加载完成了");
+                CancelInvoke("updatePrograssDialog");
+            });
+            pDialog.Show();
+            float val = 0;
+            DOTween.To(() => val, x => val = x, 1, 5).OnUpdate(() =>
+            {
+                pDialog.UpdateSlider(val);
+            });
+        }
+
+        #endregion
+
+        #region WaitBox
+
+        if (GUILayout.Button("WaitBox"))
+        {
+            WaitBox wBox = DialogBuilder.GetDialog(UiType.WaitBox) as WaitBox;
+            wBox.SetRotateSpeed(10)
+                .SetWaitTime(5)
+                .SetEndAction(() =>
+                {
+                    Debug.Log("等待结束");
+                });
+            wBox.Show();
+        }
+
+        #endregion
+
+
+
+    }
 }

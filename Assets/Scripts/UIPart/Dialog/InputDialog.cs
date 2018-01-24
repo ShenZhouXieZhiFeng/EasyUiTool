@@ -1,13 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace EasyUiTool
 {
-    public delegate void InputDialogCloseDelegate();
-    public delegate void InputDialogConfirmDelegate(string inputStr);
-
     /// <summary>
     /// 输入对话框
     /// </summary>
@@ -16,8 +14,8 @@ namespace EasyUiTool
         private Button btnClose,btnConfirm;
         private Text txtTitle;
         private InputField input;
-        private InputDialogCloseDelegate delegateClose;
-        private InputDialogConfirmDelegate delegateConfirm;
+        private Action delegateClose;
+        private Action<string> delegateConfirm;
 
         private void Awake()
         {
@@ -26,10 +24,10 @@ namespace EasyUiTool
 
         void init()
         {
-            btnClose = transform.Find("BtnClose").GetComponent<Button>();
-            btnConfirm = transform.Find("Down/ConfirmButton").GetComponent<Button>();
-            txtTitle = transform.Find("Up/Title").GetComponent<Text>();
-            input = transform.Find("Down/InputField").GetComponent<InputField>();
+            btnClose = transform.Find("btnClose").GetComponent<Button>();
+            btnConfirm = transform.Find("down/btnConfirm").GetComponent<Button>();
+            txtTitle = transform.Find("up/txtTitle").GetComponent<Text>();
+            input = transform.Find("down/inputValue").GetComponent<InputField>();
 
             btnClose.onClick.AddListener(() =>
             {
@@ -46,6 +44,7 @@ namespace EasyUiTool
                 }
                 Close();
             });
+            ResetSelf();
         }
 
         #region set
@@ -60,11 +59,11 @@ namespace EasyUiTool
         }
 
         /// <summary>
-        /// 设置取消按钮
+        /// 设置关闭按钮
         /// </summary>
         /// <param name="closeAction">关闭回调</param>
         /// <returns></returns>
-        public InputDialog SetCloseButton(InputDialogCloseDelegate closeAction)
+        public InputDialog SetCloseButton(Action closeAction)
         {
             delegateClose = closeAction;
             return this;
@@ -76,7 +75,7 @@ namespace EasyUiTool
         /// <param name="content">按钮内容</param>
         /// <param name="confirmAction">点击回调</param>
         /// <returns></returns>
-        public InputDialog SetConfirmButton(string content, InputDialogConfirmDelegate confirmAction)
+        public InputDialog SetConfirmButton(string content, Action<string> confirmAction)
         {
             txtTitle.text = content;
             return SetConfirmButton(confirmAction);
@@ -87,7 +86,7 @@ namespace EasyUiTool
         /// </summary>
         /// <param name="confirmAction">提交按钮点击回调</param>
         /// <returns></returns>
-        public InputDialog SetConfirmButton(InputDialogConfirmDelegate confirmAction)
+        public InputDialog SetConfirmButton(Action<string> confirmAction)
         {
             delegateConfirm = confirmAction;
             return this;
@@ -115,7 +114,6 @@ namespace EasyUiTool
             delegateConfirm = null;
             txtTitle.text = EasyUiDefaultConfig.DefaultTitle;
             input.contentType = InputField.ContentType.Standard;
-
         }
 
         #endregion

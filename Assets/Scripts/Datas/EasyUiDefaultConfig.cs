@@ -21,8 +21,12 @@ namespace EasyUiTool
         public const string DefaultConfirmDesc = "CONFIRM";
 
         public const float DefaultMessageShowTime = 2f;
+        public const float DefaultMessageBoxMaxWidth = 800;
+        public const float DefaultMessageBoxMaxHeight = 600;
+        public const float DefaultWaitBoxRotateSpeed = 10f;
 
         public const string DefaultChooseTitle = "Enter Your CHOOSE";
+        public const string DefaultPrograssTitle = "Loading...";
 
         #endregion
 
