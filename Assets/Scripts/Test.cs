@@ -5,6 +5,14 @@ using EasyUiTool;
 
 public class Test : MonoBehaviour {
 
+    public Transform UIRoot;
+
+    private void Start()
+    {
+        //先设置跟节点
+        DialogBuilder.SetUiRootTransform(UIRoot);
+    }
+
     private void OnGUI()
     {
         #region AlertDialog
@@ -48,6 +56,37 @@ public class Test : MonoBehaviour {
         }
 
         #endregion
+
+        #region MessageBox
+
+        if (GUILayout.Button("MessageBox"))
+        {
+            MessageBox mbox = DialogBuilder.GetDialog(UiType.MessageBox) as MessageBox;
+            mbox.SetMsg("这是一个小的小的小的消息框")
+                .SetShowTime(1.5f)
+                .SetCloseAction(()=> { Debug.Log("MessageBox关闭了"); });
+            mbox.Show();
+        }
+
+        #endregion
+
+        #region ListChooseDialog
+
+        if (GUILayout.Button("ListChooseDialog"))
+        {
+            ListChooseDialog lcDialog = DialogBuilder.GetDialog(UiType.ListChooseDialog) as ListChooseDialog;
+            string[] lsList = { "香蕉", "苹果", "葡萄" };
+            lcDialog.SetTitle("请选择你最喜欢的水果")
+                .SetDropList(lsList)
+                .SetConfirmAction((int x) =>
+                {
+                    Debug.Log("你最喜欢的水果是:" + lsList[x]);
+                });
+            lcDialog.Show();
+        }
+
+        #endregion
+
     }
 
 }

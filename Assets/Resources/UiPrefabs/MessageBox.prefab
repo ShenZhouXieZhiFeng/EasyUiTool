@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 225518287315709206}
   - component: {fileID: 114186811766740320}
   m_Layer: 5
-  m_Name: MessageDialog
+  m_Name: MessageBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

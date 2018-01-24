@@ -18,8 +18,10 @@
         /// 信息框
         /// </summary>
         MessageBox,
-        //TODO ListChooseDialog1 下拉选择
-        //TODO ListChooseDialog2 列表选择
+        /// <summary>
+        /// 下拉列表选择框
+        /// </summary>
+        ListChooseDialog,
     }
 
     /// <summary>

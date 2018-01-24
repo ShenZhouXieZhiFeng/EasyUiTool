@@ -12,7 +12,6 @@ namespace EasyUiTool
         public const string UiPrefabPath = "UiPrefabs/";
 
         #region 默认配置
-
         public const UiAnimationType DefaultAnimationType = UiAnimationType.Fade;
         public const float DefaultAnimationTime = 0.5f;
 
@@ -20,6 +19,10 @@ namespace EasyUiTool
         public const string DefaultMsg = "MESSAGE";
         public const string DefaultCancelDesc = "CANCEL";
         public const string DefaultConfirmDesc = "CONFIRM";
+
+        public const float DefaultMessageShowTime = 2f;
+
+        public const string DefaultChooseTitle = "Enter Your CHOOSE";
 
         #endregion
 

@@ -11,10 +11,21 @@ namespace EasyUiTool
     /// </summary>
     public static class DialogBuilder
     {
+        private static Transform UiRootTransform = null;
+
         /// <summary>
         /// Dialog对象池
         /// </summary>
         private static Dictionary<UiType, UiBase> panelPool = new Dictionary<UiType, UiBase>();
+
+        /// <summary>
+        /// 设置UI组件父物体
+        /// </summary>
+        /// <param name="rootTransform"></param>
+        public static void SetUiRootTransform(Transform rootTransform)
+        {
+            UiRootTransform = rootTransform;
+        }
 
         /// <summary>
         /// 获取组件
@@ -23,9 +34,9 @@ namespace EasyUiTool
         /// <returns></returns>
         public static UiBase GetDialog(UiType type)
         {
-            if (EasyUiToolManager.Instance.EasyUiRootTransform == null)
+            if (UiRootTransform == null)
             {
-                Debug.LogError("未指定EasyUiRootTransform");
+                Debug.LogError("未指定UiRootTransform");
                 return null;
             }
             if (panelPool.ContainsKey(type))
@@ -41,7 +52,7 @@ namespace EasyUiTool
                 Debug.LogError(string.Format("缺少{0}预制体", type.ToString()));
                 return null;
             }
-            GameObject newGo = Object.Instantiate(panelPrefab, EasyUiToolManager.Instance.EasyUiRootTransform);
+            GameObject newGo = Object.Instantiate(panelPrefab, UiRootTransform);
             UiBase newPanel = newGo.GetComponent<UiBase>();
             if (newPanel == null)
             {
