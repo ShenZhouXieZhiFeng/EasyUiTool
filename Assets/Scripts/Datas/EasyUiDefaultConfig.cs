@@ -28,6 +28,8 @@ namespace EasyUiTool
         public const string DefaultChooseTitle = "Enter Your CHOOSE";
         public const string DefaultPrograssTitle = "Loading...";
 
+        public const string DefaultImageDialogTitle = "IMAGE SHOW";
+
         #endregion
 
     }

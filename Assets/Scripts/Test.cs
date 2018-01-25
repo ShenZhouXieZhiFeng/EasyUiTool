@@ -138,7 +138,21 @@ public class Test : MonoBehaviour {
 
         #endregion
 
+        #region ImageDialog
 
+        if (GUILayout.Button("ImageDialog"))
+        {
+            ImageDialog iDialog = DialogBuilder.GetDialog(UiType.ImageDialog) as ImageDialog;
+            iDialog.SetTitle("图片")
+                .SetCloseAction(() =>
+                {
+                    Debug.Log("close image Dialog");
+                })
+                .SetAnimation(UiAnimationType.Zoom, 1f, UiAnimationType.Zoom, 1f);
+            iDialog.Show();
+        }
+
+        #endregion
 
     }
 }
