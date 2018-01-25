@@ -36,10 +36,10 @@ namespace EasyUiTool
             switch (AnimationShow)
             {
                 case UiAnimationType.Fade:
-                    helper.AnimationFadeIn(transform, ShowAnimationTime);
+                    helper.AnimationFadeIn(transform, ShowAnimationTime, OnPanelShowOver);
                     break;
                 case UiAnimationType.Zoom:
-                    helper.AnimationZoomIn(transform, ShowAnimationTime);
+                    helper.AnimationZoomIn(transform, ShowAnimationTime, OnPanelShowOver);
                     break;
                 default:
                     break;
@@ -51,6 +51,7 @@ namespace EasyUiTool
         /// </summary>
         public void Close()
         {
+            OnPanelCloseBegin();
             switch (AnimationClose)
             {
                 case UiAnimationType.Fade:
@@ -90,6 +91,22 @@ namespace EasyUiTool
         protected virtual void OnPanelShowBegin()
         {
             gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// 当组件出现动画结束时执行
+        /// </summary>
+        protected virtual void OnPanelShowOver()
+        {
+
+        }
+
+        /// <summary>
+        /// 当组件关闭动画开始时执行
+        /// </summary>
+        protected virtual void OnPanelCloseBegin()
+        {
+
         }
 
         /// <summary>

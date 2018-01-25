@@ -15,10 +15,6 @@
         /// </summary>
         InputDialog,
         /// <summary>
-        /// 信息框
-        /// </summary>
-        MessageBox,
-        /// <summary>
         /// 列表选择框，单选
         /// </summary>
         ListChooseDialog,
@@ -27,19 +23,23 @@
         /// </summary>
         ProgressDialog,
         /// <summary>
-        /// 等待进度圈
+        /// 信息框
         /// </summary>
-        WaitBox,
-        /// <summary>
-        /// 倒计时
-        /// </summary>
-        CountDownBox,
+        MessageBox,
         /// <summary>
         /// 图片窗口
         /// </summary>
         ImageDialog,
         //TODO video
 
+        /// <summary>
+        /// 等待进度圈
+        /// </summary>
+        WaitBox,
+        /// <summary>
+        /// 倒计时
+        /// </summary>
+        CountDownBox
     }
 
     /// <summary>

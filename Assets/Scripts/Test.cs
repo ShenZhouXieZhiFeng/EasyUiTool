@@ -125,6 +125,19 @@ public class Test : MonoBehaviour {
 
         #endregion
 
+        #region CountDownBox
+
+        if (GUILayout.Button("CountDownBox"))
+        {
+            CountDownBox cdBox = DialogBuilder.GetDialog(UiType.CountDownBox) as CountDownBox;
+            cdBox.SetCountShowTime(24, 0, 0)
+                .SetCountWaitTime(20)
+                .SetOverAction(() => { Debug.Log("计时结束"); });
+            cdBox.Show();
+        }
+
+        #endregion
+
 
 
     }

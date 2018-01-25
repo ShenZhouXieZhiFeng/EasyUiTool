@@ -19,15 +19,16 @@ namespace EasyUiTool
         /// <param name="target">目标</param>
         /// <param name="playTime">播放时间</param>
         /// <param name="overCall">结束回调</param>
-        public void AnimationFadeIn(Transform target,float playTime)
+        public void AnimationFadeIn(Transform target,float playTime,UnityAction overAction)
         {
             CanvasGroup cg = target.GetComponent<CanvasGroup>();
             if (cg == null)
             {
+                doAction(overAction);
                 return;
             }
             cg.alpha = 0;
-            cg.DOFade(1, playTime);
+            cg.DOFade(1, playTime).OnComplete(()=> { doAction(overAction); });
         }
 
         /// <summary>
@@ -36,20 +37,18 @@ namespace EasyUiTool
         /// <param name="target">目标</param>
         /// <param name="playTime"></param>
         /// <param name="overCall"></param>
-        public void AnimationFadeOut(Transform target, float playTime,UnityAction overCall)
+        public void AnimationFadeOut(Transform target, float playTime,UnityAction overAction)
         {
             CanvasGroup cg = target.GetComponent<CanvasGroup>();
             if (cg == null)
             {
-                if (overCall != null)
-                    overCall();
+                doAction(overAction);
                 return;
             }
             cg.DOFade(0, playTime).OnComplete(() =>
             {
                 cg.alpha = 1;
-                if (overCall != null)
-                    overCall();
+                doAction(overAction);
             });
         }
 
@@ -62,10 +61,10 @@ namespace EasyUiTool
         /// </summary>
         /// <param name="target">目标</param>
         /// <param name="playTime">动画时间</param>
-        public void AnimationZoomIn(Transform target, float playTime)
+        public void AnimationZoomIn(Transform target, float playTime,UnityAction overAction)
         {
             target.localScale = Vector3.zero;
-            target.DOScale(1, playTime);
+            target.DOScale(1, playTime).OnComplete(()=> { doAction(overAction); });
         }
 
         /// <summary>
@@ -73,14 +72,23 @@ namespace EasyUiTool
         /// </summary>
         /// <param name="target">目标</param>
         /// <param name="playTime">动画时间</param>
-        public void AnimationZoomOut(Transform target, float playTime,UnityAction overCall)
+        public void AnimationZoomOut(Transform target, float playTime,UnityAction overAction)
         {
             target.DOScale(0, playTime).OnComplete(() =>
             {
                 target.localScale = Vector3.one;
-                if (overCall != null)
-                    overCall();
+                doAction(overAction);
             });
+        }
+
+        #endregion
+
+        #region tool
+
+        void doAction(UnityAction ac)
+        {
+            if (ac != null)
+                ac();
         }
 
         #endregion
