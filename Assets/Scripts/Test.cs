@@ -149,11 +149,11 @@ public class Test : MonoBehaviour {
             //images.Add(new ImageModel("图片3", "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516956451402&di=d836b57e165b8a09edf273136f398ce5&imgtype=0&src=http%3A%2F%2Fpic34.photophoto.cn%2F20150104%2F0005018399195651_b.jpg"));
             //本地图片
             List<ImageModel> images = new List<ImageModel>();
-            images.Add(new ImageModel("unity800x300", Application.dataPath + "/Resources/imgs/unity800x300.png"));
-            images.Add(new ImageModel("unity900x1200", Application.dataPath + "/Resources/imgs/unity900x1200.png"));
-            images.Add(new ImageModel("unity1060x500", Application.dataPath + "/Resources/imgs/unity1060x500.png"));
-            images.Add(new ImageModel("unity1070x800", Application.dataPath + "/Resources/imgs/unity1070x800.png"));
-            images.Add(new ImageModel("unity2000x300", Application.dataPath + "/Resources/imgs/unity2000x300.png"));
+            images.Add(new ImageModel("unity800x300", Application.dataPath + "/Assets/imgs/unity800x300.png"));
+            images.Add(new ImageModel("unity900x1200", Application.dataPath + "/Assets/imgs/unity900x1200.png"));
+            images.Add(new ImageModel("unity1060x500", Application.dataPath + "/Assets/imgs/unity1060x500.png"));
+            images.Add(new ImageModel("unity1070x800", Application.dataPath + "/Assets/imgs/unity1070x800.png"));
+            images.Add(new ImageModel("unity2000x300", Application.dataPath + "/Assets/imgs/unity2000x300.png"));
 
             ImageDialog iDialog = DialogBuilder.GetDialog(UiType.ImageDialog) as ImageDialog;
             iDialog.SetTitle("图片")
