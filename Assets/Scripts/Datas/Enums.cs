@@ -30,8 +30,10 @@
         /// 图片窗口
         /// </summary>
         ImageDialog,
-        //TODO video
-
+        /// <summary>
+        /// 视频查看列表
+        /// </summary>
+        VideoDialog,
         /// <summary>
         /// 等待进度圈
         /// </summary>
