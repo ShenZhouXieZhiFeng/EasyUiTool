@@ -41,3 +41,26 @@ iDialog.SetTitle("请输入一个数字")
     });
 iDialog.Show();
 ```
+其他窗口部件，使用方式相同
+------- 
+MessageBox<br><br>
+![MessageBox](https://raw.githubusercontent.com/ShenZhouXieZhiFeng/EasyUiTool/master/ReadMe/MessageBox.png)  <br>
+<br>
+ListChooseDialog<br><br>
+![ListChooseDialog](https://raw.githubusercontent.com/ShenZhouXieZhiFeng/EasyUiTool/master/ReadMe/ListChooseDialog.png)  <br>
+<br>
+ProgressDialog<br><br>
+![ProgressDialog](https://raw.githubusercontent.com/ShenZhouXieZhiFeng/EasyUiTool/master/ReadMe/ProgressDialog.png)  <br>
+<br>
+WaitBox<br><br>
+![WaitBox](https://raw.githubusercontent.com/ShenZhouXieZhiFeng/EasyUiTool/master/ReadMe/WaitBox.png)  <br>
+<br>
+CountDownBox<br><br>
+![CountDownBox](https://raw.githubusercontent.com/ShenZhouXieZhiFeng/EasyUiTool/master/ReadMe/CountDownBox.png)  <br>
+<br>
+ImageDialog<br><br>
+![ImageDialog](https://raw.githubusercontent.com/ShenZhouXieZhiFeng/EasyUiTool/master/ReadMe/ImageDialog.png)  <br>
+<br>
+VideoDialog<br><br>
+![VideoDialog](https://raw.githubusercontent.com/ShenZhouXieZhiFeng/EasyUiTool/master/ReadMe/VideoDialog.png)  <br>
+<br>
